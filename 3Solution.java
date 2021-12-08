@@ -1,4 +1,4 @@
-class 3Solution {
+/*class Solution {
     public int lengthOfLongestSubstring(String s) {
         HashMap<Character, Integer> hm = new HashMap<Character, Integer>();
         int max = 0;
@@ -31,6 +31,34 @@ class 3Solution {
         
         //return Math.max(max,count);
         max = Math.max(last, max);
+        return max;
+    }
+}*/
+
+class 3Solution {
+    public int lengthOfLongestSubstring(String s) {
+        HashSet<Character> set = new HashSet();
+        int left = 0;
+        int right = 0;
+        int max = 0;
+        
+        while(right < s.length()){
+            /*if(set.contains(s.charAt(right))){
+                set.remove(s.charAt(left));
+                left++;
+            }*/
+            
+            if(!set.contains(s.charAt(right))){
+                set.add(s.charAt(right));
+                right++;
+                max = Math.max(set.size(), max);
+                
+            }
+            else{
+                set.remove(s.charAt(left));
+                left++;
+            }
+        }
         return max;
     }
 }
